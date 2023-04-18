@@ -1,0 +1,109 @@
+.news_list{
+    columns: 3 250px;
+    column-gap: 20px 20px;
+    margin: auto;
+}
+
+.news_list > figure{
+    margin: 0;
+    display: inline-block;
+    margin-bottom: 0px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    break-inside: avoid-column;
+    border: 1px solid rgba(0,0,0,0.125);
+}
+.news_list > figure > img{
+    width: 100%;
+    object-fit: contain;
+}
+.news_card_span{
+    font-size: clamp(12px, 2vw, 15px);
+    color: rgb(170, 170, 170);
+    user-select: none;
+}
+.news_card_info{
+    border-radius: 0px !important;
+    position: relative;
+}
+.news_card_info::before{
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: -50%;
+    opacity: 0;
+    height: 50%;
+    width: 2px;
+    background: linear-gradient(
+        transparent,
+        rgb(136, 121, 223),
+        transparent
+    );
+    transition: top 0.6s ease,
+                opacity 0.6s ease;
+    z-index: 2;
+}
+.news_card_info:hover::before{
+    top: 50%;
+    opacity: 1;
+}
+.news_card_title{
+    cursor: pointer;
+}
+.news_card_title:hover{
+    color: rgb(0, 168, 247);
+}
+.top_news_img{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: rgba(6, 24, 44, 0.2) 0px 0px 0px 2px, rgba(6, 24, 44, 0.35) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.news_highlight{
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: all 0.6s ease;
+}
+.news_highlight > h1:hover{
+    background: #f0f0f0;
+}
+.news_highlight > h1{
+    border-bottom: 1px solid rgb(204, 203, 203);
+    padding-bottom: 10px;
+    text-align: center;
+}
+.news_list_icon{
+    margin-left: 20px
+}
+.news_list_icon:hover{
+    color: rgb(0, 140, 255);
+}
+.news_list_loading{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+}
+.news_detail_image{
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+
+.news_details > img{
+   width: max(60%, 300px);
+   height: 50vh;
+   object-fit: contain;
+   display: block;
+   margin: 0 auto 3vmin;
+} 
+
+.news_details > p{
+    font-size: clamp(16px, 3vw, 18px);
+    text-align: justify;
+}
+

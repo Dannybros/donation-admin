@@ -1,0 +1,53 @@
+.case_list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, calc(100% / 3)));
+}
+/* 
+@media (max-width:790px) {
+    .case_list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 3fr));
+        grid-gap: 1rem 3rem;
+    }
+} */
+.case_card{
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+}
+
+.case_card > img{
+    height: 200px;
+    object-fit: cover;
+}
+.case_card > .card-body{
+    height: auto;
+}
+.case_card_title{
+    font-size: clamp(16px,3vw, 18px);
+    font-style: bold;
+    min-height: 45px;
+    display: grid;
+    place-items: center;
+    text-align: justify;
+}
+.case_card_text{
+    text-decoration: none;
+    color: black;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: clamp(14px, 2vw, 16px);
+    text-align: justify;
+}
+
+.case_list_loading{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+}
