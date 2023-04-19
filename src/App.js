@@ -17,31 +17,31 @@ export function App() {
   const location = useLocation();
 
   return (
-    <>
-    <GlobalAlert/>
-    {location.pathname !== '/login' && <Navigation />}
-    <Container className="py-5">
-      <Routes>
-        <Route path="/" element={<Protected element={<Home />} />} />
-        <Route path="/make/:option" element={<Protected element={<CreateForm />} />} />
+    <div className="App">
+      <GlobalAlert/>
+      {location.pathname !== '/login' && <Navigation />}
+      <Container className="py-5">
+        <Routes>
+          <Route path="/" element={<Protected element={<Home />} />} />
+          <Route path="/make/:option" element={<Protected element={<CreateForm />} />} />
 
-        <Route path="/news" element={<Protected/>}>
-          <Route index element={<BrowseNews />} />
-          <Route path=":newsId" element={<News />} />
-          <Route path="list/:param" element={<NewsList/>} />
-        </Route>
-        <Route path="/case" element={<Protected/>}>
-          <Route index element={<CaseBrowse />} />
-          <Route path=":id" element={<Case/>} />
-        </Route>
-        <Route path="/news/*" element={<Navigate to="/404" />} />
-        <Route path="/case/*" element={<Navigate to="/404" />} />
-        <Route path="/login" element={<Login/>} />
+          <Route path="/news" element={<Protected/>}>
+            <Route index element={<BrowseNews />} />
+            <Route path=":newsId" element={<News />} />
+            <Route path="list/:param" element={<NewsList/>} />
+          </Route>
+          <Route path="/case" element={<Protected/>}>
+            <Route index element={<CaseBrowse />} />
+            <Route path=":id" element={<Case/>} />
+          </Route>
+          <Route path="/news/*" element={<Navigate to="/404" />} />
+          <Route path="/case/*" element={<Navigate to="/404" />} />
+          <Route path="/login" element={<Login/>} />
 
-        <Route path="*" element={<Navigate to="/404" />} />
-        <Route path="/404" element={<NotFound />} />
-      </Routes>
-    </Container>
-    </>
+          <Route path="*" element={<Navigate to="/404" />} />
+          <Route path="/404" element={<NotFound />} />
+        </Routes>
+      </Container>
+    </div>
   )
 }
