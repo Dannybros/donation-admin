@@ -1,5 +1,6 @@
 import React from 'react'
 import {Navbar, Nav, Form , NavDropdown, Container} from 'react-bootstrap';
+import {Link} from 'react-router-dom'
 
 function Navigation() {
   return (
@@ -8,7 +9,7 @@ function Navigation() {
       height:"80px"
     }}>
       <Container>
-        <Navbar.Brand href="#">
+        <Navbar.Brand as={Link} to="#">
           <img
             alt=""
             src="/logo.svg"
@@ -24,48 +25,38 @@ function Navigation() {
           navbarScroll
         >
           <Nav.Link href="/">Home</Nav.Link>
-          <NavDropdown 
-            title="Case" 
-            id="navbarScrollingDropdown"
-          >
-            <NavDropdown.Item href="/case"
-              style={{fontSize:"clamp(12px, 2vw, 16px)"}}
-            >
+
+          <NavDropdown title="Case" id="navbarScrollingDropdown">
+            <NavDropdown.Item as={Link} to="/case" className="nav_link">
               Case List
             </NavDropdown.Item>
+
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/make/case"
-              style={{fontSize:"clamp(12px, 2vw, 16px)"}}
-            >
+
+            <NavDropdown.Item as={Link} to="/make/case" className="nav_link">
               Make Case
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown 
-            title="News" 
-            id="navbarScrollingDropdown"
-            
-          >
-            <NavDropdown.Item href="/news"
-              style={{fontSize:"clamp(12px, 2vw, 16px)"}}
-            >
+
+          <NavDropdown title="News" id="navbarScrollingDropdown">
+            <NavDropdown.Item as={Link} to="/news" className="nav_link">
               Browse News
             </NavDropdown.Item>
+
             <NavDropdown.Divider />
 
-            <NavDropdown.Item href="/news/list/recent"
-              style={{fontSize:"clamp(12px, 2vw, 16px)"}}
-            >
+            <NavDropdown.Item as={Link} to="/news/list/recent" className="nav_link">
               News List
             </NavDropdown.Item>
+
             <NavDropdown.Divider />
 
-            <NavDropdown.Item href="/make/news"
-              style={{fontSize:"clamp(12px, 2vw, 16px)"}}
-            >
+            <NavDropdown.Item as={Link} to="/make/news" className="nav_link">
               Make News
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
+
         <Form className="d-flex">
           <Form.Select>
             <option>English</option>
@@ -73,6 +64,7 @@ function Navigation() {
             <option>Korean</option>
           </Form.Select>
         </Form>
+
       </Container>
     </Navbar>
   )

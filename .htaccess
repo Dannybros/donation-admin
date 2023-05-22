@@ -1,0 +1,14 @@
+<!-- this is for deploying react in cpanel  (redirecting all the routes to index)-->
+<!-- Add a new file called .env at the root level of your project, so that it's at the same level of your package.json. Inside the file, add PUBLIC_URL=https://hostinger-react-app.com. Now, when you run npm run build, you should see it points the domain. -->
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+
+</IfModule>

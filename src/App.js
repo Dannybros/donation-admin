@@ -38,8 +38,8 @@ export function App() {
           <Route path="/case/*" element={<Navigate to="/404" />} />
           <Route path="/login" element={<Login/>} />
 
-          <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </Container>
     </div>
