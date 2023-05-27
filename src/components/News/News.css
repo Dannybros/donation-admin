@@ -97,13 +97,16 @@
 .news_details > img{
    width: max(60%, 300px);
    height: 50vh;
-   object-fit: contain;
+   object-fit: cover;
    display: block;
-   margin: 0 auto 3vmin;
+   margin: 3vmin auto;
 } 
 
 .news_details > p{
     font-size: clamp(16px, 3vw, 18px);
     text-align: justify;
+    letter-spacing: 3px;
+    line-height: 40px;
+    margin: 0;
 }
 

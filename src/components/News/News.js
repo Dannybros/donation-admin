@@ -3,13 +3,16 @@ import axios from '../Axios'
 import {Button} from 'react-bootstrap';
 import { useParams, useNavigate } from "react-router-dom";
 import {useAlertContext} from '../Alert/AlertContext'
+import {useTranslation} from "react-i18next";
 
 function News() {
-  const [data, setData]  = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const {showAlert} = useAlertContext();
-  const { newsId } = useParams();
   const navigate = useNavigate();
+
+  const [ data, setData ]  = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true);
+  const { showAlert } = useAlertContext();
+  const { newsId } = useParams();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +38,7 @@ function News() {
   }
   
   function DivideSentences() {
-    const sentences = textIntoSentences(data.content.zh);
+    const sentences = textIntoSentences(data.content[i18n.language]);
     const numImages = data.img.length;
     let sentencesPerParagraph = Math.ceil(sentences.length / (numImages + 1));
     
@@ -81,7 +84,7 @@ function News() {
  
   return (
     <>
-      <h1 className='mb-3'>{data.title.en}</h1>
+      <h1 className='mb-3'>{data.title[i18n.language]}</h1>
       <span className='news_card_span mx-2'>{data.date.split("T")[0]}</span>
       <DivideSentences/>
       <Button className="w-100" size="lg" variant="danger" onClick={handleDeleteNew}> Delete </Button>

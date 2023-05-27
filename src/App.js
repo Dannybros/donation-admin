@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation, Navigate } from "react-router-dom"
+import './locales/i18n';
 import Protected from "./components/Auth/Protected";
 import NotFound from "./components/404/NotFound";
 import Home from "./components/Home/Home";
@@ -8,10 +9,10 @@ import News from "./components/News/News";
 import CreateForm from "./components/CreateForm";
 import CaseBrowse from './components/Case/CaseBrowse';
 import Case from './components/Case/Case'
-import {Container} from 'react-bootstrap';
 import NewsList from "./components/News/NewsList";
 import Login from "./components/Login/Login";
 import { GlobalAlert } from "./components/Alert/GlobalAlert";
+import {Container} from 'react-bootstrap';
 
 export function App() {
   const location = useLocation();

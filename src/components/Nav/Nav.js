@@ -1,8 +1,17 @@
 import React from 'react'
 import {Navbar, Nav, Form , NavDropdown, Container} from 'react-bootstrap';
 import {Link} from 'react-router-dom'
+import {useTranslation} from "react-i18next";
 
 function Navigation() {
+
+  const {i18n} = useTranslation();
+
+  const changeLang=(e)=>{
+    const lang = e.target.value;
+    i18n.changeLanguage(lang);
+  }
+
   return (
     <Navbar bg='light' sticky='top' style={{
       borderBottom:"1px solid #ddd",
@@ -58,10 +67,10 @@ function Navigation() {
         </Nav>
 
         <Form className="d-flex">
-          <Form.Select>
-            <option>English</option>
-            <option>Chinese</option>
-            <option>Korean</option>
+          <Form.Select onChange={changeLang}>
+            <option value='en'>English</option>
+            <option value='zh'>Chinese</option>
+            <option value='ko'>Korean</option>
           </Form.Select>
         </Form>
 

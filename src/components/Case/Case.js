@@ -3,13 +3,16 @@ import axios from '../Axios'
 import {Button} from 'react-bootstrap';
 import { useParams, useNavigate } from "react-router-dom";
 import {useAlertContext} from '../Alert/AlertContext'
+import {useTranslation} from "react-i18next";
 
 function Case() {
+  const navigate = useNavigate();
+
   const [data, setData]  = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const {showAlert} = useAlertContext();
   const { id } = useParams();
-  const navigate = useNavigate();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +32,7 @@ function Case() {
   }
   
   function DivideSentences() {
-    const sentences = textIntoSentences(data.content.en);
+    const sentences = textIntoSentences(data.content[i18n.language]);
     const numImages = data.img.length;
     let sentencesPerParagraph = Math.ceil(sentences.length / (numImages + 1));
     
@@ -75,8 +78,8 @@ function Case() {
  
   return (
     <>
-      <img alt="" src={data.img[0]} style={{height:"15vw", width:"100%", objectFit:"cover"}}/>
-      <h1 className='mb-2 mt-3'>{data.title.en}</h1>
+      <img alt="" src={data.img[0]} style={{height:"20vw", width:"100%", objectFit:"cover"}}/>
+      <h1 className='mb-2 mt-3'>{data.title[i18n.language]}</h1>
       <span className='news_card_span mx-2'>{data.createdAt.split("T")[0]} </span>
       <DivideSentences/>
       <Button className="w-100" size="lg" variant="danger" onClick={handleDeleteNew}> Delete </Button>

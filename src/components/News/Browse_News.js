@@ -6,11 +6,14 @@ import axios from '../Axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate  } from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 function BrowseNews() {
     
   const navigate = useNavigate();
-  
+
+  const {i18n} = useTranslation();
+
   const [data, setData]  = useState([]);
   
   useEffect(()=> {
@@ -46,26 +49,11 @@ function BrowseNews() {
           <main className='news_card_info p-3'>
             <span className='news_card_span'>{item.date.split('T')[0]}</span>
             <figcaption className='news_card_title' onClick={()=>handleNewsClick(item._id)}>
-              {item.title.en}
+              {item.title[i18n.language]}
             </figcaption>
           </main>
         </figure>
-        ))}      
-        {data.map((item, index) => (
-        <figure key={index} className="mb-3">
-          <img
-            src={item.img[0]}
-            alt="blog post"
-            onClick={()=>handleNewsClick(index)}
-          />
-          <main className='news_card_info p-3'>
-            <span className='news_card_span'>{item.date.split('T')[0]}</span>
-            <figcaption className='news_card_title' onClick={()=>handleNewsClick(item._id)}>
-              {item.title.en}
-            </figcaption>
-          </main>
-        </figure>
-        ))}      
+        ))} 
     </div>
     )
   }

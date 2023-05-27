@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { ListGroup, Spinner, Form } from 'react-bootstrap';
 import axios from '../Axios'
 import './Pagination.css'
+import { useTranslation } from 'react-i18next';
+import { ListGroup, Spinner, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavigate, useParams } from "react-router-dom";
 import { faChevronLeft, faAngleDoubleLeft, faChevronRight, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +12,9 @@ function NewsList() {
     const [searchQuery, setSearchQuery] = useState({query:"", date:""});
     const [data, setData]  = useState([]);
     const { param } = useParams();
+    const { i18n } = useTranslation();
+
+    console.log(data);
 
     useEffect(()=> {
         const fetchData = async () => {
@@ -89,8 +93,8 @@ function NewsList() {
                         <ListGroup.Item key={data._id} className="news-list-group-item" onClick={()=>handleClick(data._id)}>
                             <img src={data.img[0]} alt="" style={{height:"100px", aspectRatio:"5/3"}}/>
                             <div className='ms-4'>
-                                <h4> {data.title.en}</h4>
-                                <p className='news-list-text'>{data.content.en.substr(0, 300) + "..."}</p>
+                                <h4> {data.title[i18n.language]}</h4>
+                                <p className='news-list-text'>{data.content[i18n.language].substr(0, 300) + "..."}</p>
                                 <span className='news_list_date'>{data.date.split("T")[0]}</span>
                             </div>
                         </ListGroup.Item>

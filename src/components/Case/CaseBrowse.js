@@ -1,6 +1,7 @@
 import React, {useState, useEffect}  from 'react'
 import { Spinner, Form, Card } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import axios from '../Axios'
 import './Case.css'
 
@@ -8,6 +9,7 @@ function CaseBrowse() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData]  = useState([]);
+  const { i18n } = useTranslation();
 
   useEffect(()=> {
     const fetchData = async () => {
@@ -66,9 +68,9 @@ function CaseBrowse() {
             <Card key={idx} className="case_card" onClick={()=>handleOnClick(item._id)}>
               <Card.Img variant="top" src={item.img[0]} />
               <Card.Body>
-                <Card.Title className='case_card_title text-danger'>{item.title.en}</Card.Title>
+                <Card.Title className='case_card_title text-danger'>{item.title[i18n.language]}</Card.Title>
                 <Card.Text as='a' className='case_card_text'>
-                  {item.content.en}
+                  {item.content[i18n.language]}
                 </Card.Text>
               </Card.Body>
               <Card.Footer>
